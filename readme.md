@@ -17,7 +17,7 @@ iLearn merupakan sistem pembelajaran online menggunakan Laravel. Fitur yang terd
 ```git clone https://github.com/alfrcr/ilearn.git```
 2. Masuk ke folder ilearn dengan perintah `cd ilearn`
 3. Jalankan composer
-```composer install``
+```composer install```
 4. Copy dan paste file `.env.example` lalu ubah menjadi `.env`
 5. Atur sesuaikan konfigurasi database anda.
 6. Jalankan migrasi untuk membuat table
@@ -50,6 +50,9 @@ Siswa:
 username: reynold
 password: secret
 ```
+
+## Known issues
+1. Jika anda menggunakan xampp/wamp, fitur quiz akan mengalami error karena url pada ajax tidak sesuai (404). Mohon untuk disesuaikan dengan domain lokal anda pada file  [ini](https://github.com/alfrcr/ilearn/blob/master/resources/assets/js/client/quiz.js#L112), line [ini](https://github.com/alfrcr/ilearn/blob/master/resources/assets/js/client/quiz.js#L148) dan line [ini](https://github.com/alfrcr/ilearn/blob/master/resources/assets/js/client/quiz.js#L200). Setelah diubah jalankan `gulp --production` untuk mem-build file js tersebut. Sebelumnya pastikan `gulp` sudah terinstall.
 
 ## Troubleshooting
 Silakan buat [issue](https://github.com/alfredcrosby/ilearn/issues) baru.
