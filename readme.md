@@ -52,7 +52,7 @@ password: secret
 ```
 
 ## Known issues
-1. Jika anda menggunakan xampp/wamp, fitur quiz akan mengalami error karena url pada ajax tidak sesuai (404). Mohon untuk disesuaikan dengan domain lokal anda pada file  [ini](https://github.com/alfrcr/ilearn/blob/master/resources/assets/js/client/quiz.js#L112), line [ini](https://github.com/alfrcr/ilearn/blob/master/resources/assets/js/client/quiz.js#L148) dan line [ini](https://github.com/alfrcr/ilearn/blob/master/resources/assets/js/client/quiz.js#L200). Setelah diubah jalankan `gulp --production` untuk mem-build file js tersebut. Sebelumnya pastikan `gulp` sudah terinstall. (Found by [Vektor Lutfi](https://www.facebook.com/vektorlutfi112?fref=ufi))
+1. Jika anda menggunakan xampp/wamp, fitur quiz akan mengalami error karena url pada ajax tidak sesuai (404). Mohon untuk disesuaikan dengan domain lokal anda pada line  [ini](https://github.com/alfrcr/ilearn/blob/master/resources/assets/js/client/quiz.js#L112), line [ini](https://github.com/alfrcr/ilearn/blob/master/resources/assets/js/client/quiz.js#L148) dan line [ini](https://github.com/alfrcr/ilearn/blob/master/resources/assets/js/client/quiz.js#L200). Setelah diubah jalankan `gulp --production` untuk mem-build file js tersebut. Sebelumnya pastikan `gulp` sudah terinstall. (Found by [Vektor Lutfi](https://www.facebook.com/vektorlutfi112?fref=ufi))
 
 ## Troubleshooting
 Silakan buat [issue](https://github.com/alfredcrosby/ilearn/issues) baru.
