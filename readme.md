@@ -15,7 +15,7 @@ iLearn merupakan sistem pembelajaran online menggunakan Laravel. Fitur yang terd
 ## Instalation
 1. Clone repository ini dengan menjalankan perintah pada terminal 
 ```git clone https://github.com/alfrcr/ilearn.git <nama-folder-anda>```
-2. Masuk ke folder ilearn dengan perintah `cd <nama-folder-anda>`
+2. Masuk ke folder project dengan perintah `cd <nama-folder-anda>`
 3. Jalankan composer
 ```composer install```
 4. Copy dan paste file `.env.example` lalu ubah menjadi `.env`
