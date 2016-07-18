@@ -16,7 +16,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">Unggah Gambar</h4>
             </div>            
-            {!! Form::model($user, ['route' => 'auth.image', 'files' => true, 'method' => 'patch']) !!}
+            {!! Form::model($user, ['route' => 'auth.image', 'files' => true, 'method' => 'put']) !!}
                 <div class="modal-body">
                     {!! Form::hidden('field', 'picture', ['class' => 'field_type']) !!}
                     <div class="form-group">

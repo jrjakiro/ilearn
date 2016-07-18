@@ -29,6 +29,9 @@ Route::get('/auth/logout', ['uses' => 'LoginController@logout', 'as' => 'auth.lo
 Route::group(['middleware' => ['auth', 'role:teacher|student']], function () {
 	Route::put('/auth/profile', ['uses' => 'LoginController@update', 'as' => 'auth.update']);
 	Route::put('/auth/password', ['uses' => 'LoginController@passwordUpdate', 'as' => 'auth.updatepassword']);
+});
+
+Route::group(['middleware' => 'auth'], function () {
 	Route::put('/auth/image', ['uses' => 'LoginController@changeImage', 'as' => 'auth.image']);
 });
 
