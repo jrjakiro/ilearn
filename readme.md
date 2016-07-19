@@ -53,6 +53,9 @@ password: secret
 
 ## Known issues
 1. Jika anda menggunakan xampp/wamp, fitur quiz akan mengalami error karena url pada ajax tidak sesuai (404). Mohon untuk disesuaikan dengan domain lokal anda pada line  [ini](https://github.com/alfrcr/ilearn/blob/master/resources/assets/js/client/quiz.js#L112), line [ini](https://github.com/alfrcr/ilearn/blob/master/resources/assets/js/client/quiz.js#L148) dan line [ini](https://github.com/alfrcr/ilearn/blob/master/resources/assets/js/client/quiz.js#L200). Setelah diubah jalankan `gulp --production` untuk mem-build file js tersebut. Sebelumnya pastikan `gulp` sudah terinstall. (Found by [Vektor Lutfi](https://www.facebook.com/vektorlutfi112?fref=ufi))
+2. Ketika mengubah foto profil, di dalam pc 32-bit akan terjadi error seperti ini:
+``` when calling Ramsey\Uuid\Converter\Time\DegradedTimeConverter::calculateTime on a 32-bit system, Moontoast\Math\BigNumber must be present. ```
+di dalam pc 32-bit, Ramsey Uuid v1 membutuhkan package [moontoast/math](https://github.com/moontoast/math). Cek dokumentasi [Ramsey](https://github.com/ramsey/uuid#requirements). Solusinya install [moontoast/math](https://github.com/moontoast/math) terlebih dahulu. (Found by @ignzdave)
 
 ## Troubleshooting
 Silakan buat [issue](https://github.com/alfredcrosby/ilearn/issues) baru.
