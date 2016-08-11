@@ -81,9 +81,23 @@
 							{!! Form::select('classroom_id', $lms['profile']->teacherclassrooms()->whereNotIn('id', $ids)->get()->pluck('classname', 'id'), null, ['class' => 'select2 form-control', 'placeholder' => 'Pilih kelas...'])  !!}
 							{!! $errors->first('classroom_id', '<p class="help-block">:message</p>') !!}
 							</div>
+							<div class="form-group {{ $errors->has('start') ? 'has-error' : '' }}"> 
+								<div class="input-group date">
+	                <input type="text" class="form-control datepicker" name="start" placeholder="Start" />
+	                <span class="input-group-addon">
+	                  <span class="glyphicon glyphicon-calendar"></span>
+	                </span>
+	              </div>
+								{!! $errors->first('start', '<p class="help-block">:message</p>') !!}
+							</div>
 							<div class="form-group {{ $errors->has('deadline') ? 'has-error' : '' }}"> 
-							{!! Form::text('deadline', null, ['class' => 'form-control datepicker', 'placeholder' => 'Deadline']) !!}
-							{!! $errors->first('deadline', '<p class="help-block">:message</p>') !!}
+								<div class="input-group date">
+	                <input type="text" class="form-control datepicker" name="deadline" placeholder="Deadline" />
+	                <span class="input-group-addon">
+	                  <span class="glyphicon glyphicon-calendar"></span>
+	                </span>
+	              </div>
+								{!! $errors->first('deadline', '<p class="help-block">:message</p>') !!}
 							</div>
 						</div>
 					</div>

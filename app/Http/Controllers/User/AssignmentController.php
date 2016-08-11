@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Models\Activity;
 use App\Models\Assignment;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -137,8 +138,11 @@ class AssignmentController extends Controller
 			'detail' => $assignment->id
 		]);
 
+		$start = Carbon::parse($request->start);
+		$deadline = Carbon::parse($request->deadline);
+
 		$assignment->classrooms()
-			->sync([$request->classroom_id => ['deadline' => $request->deadline]], false);
+			->sync([$request->classroom_id => ['start' => $start, 'deadline' => $deadline]], false);
 
 		\Flash::success('Tugas berhasil dibagikan.');
 

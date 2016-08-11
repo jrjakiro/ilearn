@@ -988,3 +988,7 @@ ul.wysihtml5-toolbar > li {
 .classroom-wrapper .list-group-item {
 	font-size: 12px;
 }
+
+.bootstrap-datetimepicker-widget {
+	z-index: 2000!important;
+}

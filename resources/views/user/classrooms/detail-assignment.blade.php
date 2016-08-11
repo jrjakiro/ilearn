@@ -18,6 +18,9 @@
 			<div class="panel-heading">
 				<h4 class="panel-title text-bold">Tugas terkumpul <span class="badge">{{ $assignment->submissions->count() }}</span></h4>
 			</div>
+			<ul class="list-group">
+				<li class="list-group-item"><a href="{{ route('classrooms.downloadsubmission', [$classroom->id, $assignment->id]) }}"><i class="fa fa-download"></i> Data tugas terkumpul</a></li>
+			</ul>
 			<div class="panel-body">
 				@forelse($assignment->submissions as $user)
 					<div class="panel panel-info panel-sm">

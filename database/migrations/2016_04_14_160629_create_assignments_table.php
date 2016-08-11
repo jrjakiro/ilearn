@@ -28,7 +28,8 @@ class CreateAssignmentsTable extends Migration
 		Schema::create('assignment_classroom', function (Blueprint $table) {
 			$table->uuid('assignment_id');
 			$table->uuid('classroom_id');
-			$table->date('deadline');
+			$table->timestamp('start');
+			$table->timestamp('deadline');
 			$table->timestamps();
 
 			$table->foreign('assignment_id')->references('id')->on('assignments')->onDelete('cascade');

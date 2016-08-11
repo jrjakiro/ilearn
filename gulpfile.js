@@ -28,6 +28,7 @@ elixir(function(mix) {
 	  'shared/datepicker3.css',
 	  'shared/sweetalert.css',
 	  'client/bootstrap-toggle.min.css',
+	  'client/datetime.css',
 	  'client/app.css'
 	], 'public/assets/css/client/build.min.css'
 	)
@@ -48,6 +49,7 @@ elixir(function(mix) {
 		'client/velocity.js',
 		'client/bootstrap-toggle.min.js',
 		'client/moment.js',
+		'client/datetime.js',
 		'client/countdown.js',
 		'client/lms-paginate.js',
 		'client/app.js',

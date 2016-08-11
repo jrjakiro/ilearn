@@ -77,6 +77,8 @@ Route::group(['namespace' => 'User', 'middleware' => ['auth', 'role:teacher|stud
 	Route::get('/classrooms/{classrooms}/modules/{modules}', ['uses' => 'ClassroomController@moduleDetail', 'as' => 'classrooms.moduledetail']);
 	Route::get('/classrooms/{classrooms}/quizzes/{quizzes}', ['uses' => 'ClassroomController@quizDetail', 'as' => 'classrooms.quizdetail']);
 	Route::get('/classrooms/{classrooms}/quizzes/{quizzes}/score', ['uses' => 'ClassroomController@score', 'as' => 'classrooms.score']);
+	Route::get('/score-download/{classrooms}/{quizzes}', ['uses' => 'ClassroomController@downloadScore', 'as' => 'classrooms.downloadscore']);
+	Route::get('/submission-download/{classrooms}/{assignment}', ['uses' => 'ClassroomController@downloadSubmission', 'as' => 'classrooms.downloadsubmission']);
 	Route::get('/classrooms/download/{filename}', ['uses' => 'ClassroomController@download', 'as' => 'classrooms.download']);
 
 	Route::resource('/discuss', 'DiscussionController', ['only' => ['store', 'destroy']]);

@@ -13,6 +13,7 @@ use Carbon\Carbon;
 use Gate;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
+use Excel;
 
 class ClassroomController extends Controller
 {
@@ -214,14 +215,14 @@ class ClassroomController extends Controller
 
 	public function score($classroom_id, $quiz_id)
 	{
-		$quiz = Classroom::with('quizzes')->findOrFail($classroom_id)
-			->quizzes()
+		$classroom = Classroom::with('quizzes')->findOrFail($classroom_id);
+		$quiz = $classroom->quizzes()
 			->where('id', $quiz_id)
 			->first();
 		$users = $quiz->students;
 		$page_title = 'Nilai';
 
-		return view('user.classrooms.quiz-score', compact('quiz', 'page_title', 'users'));
+		return view('user.classrooms.quiz-score', compact('classroom', 'quiz', 'page_title', 'users'));
 	}
 
 	public function attachSubmission(Request $request)
@@ -289,6 +290,56 @@ class ClassroomController extends Controller
 		}
 
 		return abort(500);
+	}
+
+	public function downloadScore($classroom_id, $quiz_id)
+	{
+		$classroom = Classroom::with('quizzes')->findOrFail($classroom_id);
+		$quiz = $classroom->quizzes()
+			->where('id', $quiz_id)
+			->first();
+		$users = $quiz->students;
+
+		$data = $users->map(function($user, $index) {
+			return [
+				'No' => $index + 1,
+				'Nama' => $user->fullname,
+				'Tidak Terjawab' => $user->pivot->unanswered,
+				'Skor' => $user->pivot->score
+			];
+		})->toArray();
+
+		return Excel::create($quiz->title, function($excel) use ($data) {
+			$excel->sheet('Sheet 1', function($sheet) use ($data) {
+				$sheet->fromArray($data);
+			});
+		})->download('xls');
+
+	}
+
+	public function downloadSubmission($classroom_id, $assignment_id)
+	{
+		$classroom  = Classroom::with('assignments')->findOrFail($classroom_id);
+		$assignment = $classroom->assignments()
+			->where('assignment_id', $assignment_id)
+			->first();
+		$users = $assignment->submissions;
+
+		$data = $users->map(function($user, $index) {
+			return [
+				'No' => $index + 1,
+				'Nama Siswa' => $user->fullname,
+				'Subject' => $user->pivot->title,
+				'Isi' => $user->pivot->content,
+				'Url File' => route('classrooms.download', $user->pivot->file)
+			];
+		});
+
+		return Excel::create($assignment->title, function($excel) use ($data) {
+			$excel->sheet('Sheet 1', function($sheet) use ($data) {
+				$sheet->fromArray($data);
+			});
+		})->download('xls');
 	}
 
 	public function upload(UploadedFile $file)

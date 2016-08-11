@@ -68,7 +68,7 @@ class Classroom extends Model
 
 	public function assignments()
 	{
-		return $this->belongsToMany('App\Models\Assignment')->withPivot('deadline')->withTimestamps()->orderBy('assignment_classroom.created_at', 'DESC');
+		return $this->belongsToMany('App\Models\Assignment')->withPivot('start', 'deadline')->withTimestamps()->orderBy('assignment_classroom.created_at', 'DESC');
 	}
 
 	public function courses()

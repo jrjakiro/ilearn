@@ -10,7 +10,7 @@
 						<img class="img-circle" src="{{ $user->picture_md }}">
 					</figure>				
 					<h1 class="profile-name text-center">{{ $user->fullname }}</h1>
-					<p class="profile-bio text-center"><em>"{{ $user->bio }}"</em></p>
+					<p class="profile-bio text-center"><em>"{{ $user->bio ? $user->bio : 'Bagaimana kabarmu?' }}"</em></p>
 				</div>
 			</div>
 		</div>

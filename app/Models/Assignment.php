@@ -23,7 +23,7 @@ class Assignment extends Model
 
 	public function classrooms()
 	{
-		return $this->belongsToMany('App\Models\Classroom')->withPivot('deadline')->withTimestamps();
+		return $this->belongsToMany('App\Models\Classroom')->withPivot('start', 'deadline')->withTimestamps();
 	}
 
 	public function submissions()

@@ -8,6 +8,7 @@
     <div class="panel-body">
       <p><strong>Nama Quiz: </strong> {{ $quiz->title }}</p>
       <p><strong>Nilai Minimum: </strong> {{ $quiz->pass_score }}</p>
+      <p><strong>Unduh: </strong><a href="{{ route('classrooms.downloadscore', [$classroom->id, $quiz->id]) }}"><i class="fa fa-download"></i> {{ $quiz->title }}</a></p>
     </div>
     @forelse($users as $i => $user)
       <table class="table">

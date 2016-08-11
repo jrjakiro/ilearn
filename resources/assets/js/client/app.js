@@ -12,19 +12,24 @@
     $('.textarea').wysihtml5();
     $('.select2').select2();
     $('[data-toggle="tooltip"]').tooltip();
+    // if($('.datepicker').length) {
+    //   $('.datepicker').datepicker({
+    //     format: 'yyyy/mm/dd',
+    //     startDate: '+1d'
+    //   });
+    // }
     if($('.datepicker').length) {
-      $('.datepicker').datepicker({
-        format: 'yyyy/mm/dd',
-        startDate: '+1d'
+      $('.datepicker').datetimepicker({
+        minDate: Date.now()
       });
     }
 
-    if($('.datepicker-bod').length) {
-      $('.datepicker-bod').datepicker({
-        format: 'yyyy-mm-dd',
-        startDate: '1950-01-01'
-      });
-    }
+    // if($('.datepicker-bod').length) {
+    //   $('.datepicker-bod').datepicker({
+    //     format: 'yyyy-mm-dd',
+    //     startDate: '1950-01-01'
+    //   });
+    // }
 
     if($('#calendar').length) {
       $('#calendar').fullCalendar({

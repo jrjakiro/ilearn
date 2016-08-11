@@ -11,17 +11,26 @@ trait ClassroomAccessor
 
 	public function getCountAvailableAssignmentsAttribute()
 	{
-		return $this->assignments()->where('deadline', '>', date('Y-m-d'))->count();
+		return $this->assignments()
+			->where('start', '<', date('Y-m-d H:i:s'))
+			->where('deadline', '>', date('Y-m-d H:i:s'))
+			->count();
 	}
 
 	public function getPaginateAvailableAssignmentsAttribute()
 	{
-		return $this->assignments()->where('deadline', '>', date('Y-m-d'))->paginate(7, ['*'], 'class_assignment');
+		return $this->assignments()
+			->where('start', '<', date('Y-m-d H:i:s'))
+			->where('deadline', '>', date('Y-m-d H:i:s'))
+			->paginate(7, ['*'], 'class_assignment');
 	}
 
 	public function getShowFiveAssignmentsAttribute()
 	{
-		return $this->assignments()->where('deadline', '>', date('Y-m-d'))->limit(5)->get();
+		return $this->assignments()
+			->where('start', '<', date('Y-m-d H:i:s'))
+			->where('deadline', '>', date('Y-m-d H:i:s'))
+			->limit(5)->get();
 	}
 
 	public function getCountCoursesAttribute()
